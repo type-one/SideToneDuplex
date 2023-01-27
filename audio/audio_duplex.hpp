@@ -32,8 +32,8 @@
 #include <cstdint>
 #include <memory>
 
-class ma_context;
-class ma_device;
+struct ma_context;
+struct ma_device;
 
 namespace audio
 {

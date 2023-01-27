@@ -13,7 +13,7 @@ The code is portable and use the miniaudio framework (https://miniaud.io/).
 
 # Why
 The purpose was to test the duplex feature of miniaudio and which minimum period
-it was possible to reach (1 ms).
+it was possible to reach (between 1 ms and 8 ms).
 
 This small framework can be a start for more complex sound processing on the feedback voice.
 
@@ -38,7 +38,8 @@ Press "enter" to exit
 You can play with different parameters in the audio/audio_config.hpp
 file: format, sample rate, channels, period.
 
-Recommended parameters are 22050 hz, mono (1 channel), signed 16, and a period of 1 ms.
+Recommended parameters are 22050 hz, mono (1 channel), signed 16, and a period of 1 ms for
+Windows and 8 ms for Linux.
 
 Enjoy
 

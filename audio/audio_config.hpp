@@ -38,7 +38,7 @@ namespace audio
     // increase if not audible
     constexpr const int audio_period_ms = 1; // Windows 10, Corei7
 #else
-    constexpr const int audio_period_ms = 1; // Linux native host
+    constexpr const int audio_period_ms = 8; // Linux native host
     //constexpr const int audio_period_ms = 20; // Linux in VMPlayer
 #endif
 

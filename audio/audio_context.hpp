@@ -32,7 +32,7 @@
 #include <cstdint>
 #include <memory>
 
-class ma_context;
+struct ma_context;
 
 namespace audio
 {
