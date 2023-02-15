@@ -81,11 +81,11 @@ if(LINUX)
 
 elseif(WIN32)
     set(CMAKE_CXX_FLAGS "")
-    set(CMAKE_CXX_FLAGS_DEBUG "-D DEBUG")
+    set(CMAKE_CXX_FLAGS_DEBUG "/D DEBUG")
     set(CMAKE_CXX_FLAGS_RELEASE "/Ox /D NDEBUG /fp:fast")
 
     set(CMAKE_C_FLAGS "")
-    set(CMAKE_C_FLAGS_DEBUG "-D DEBUG")
+    set(CMAKE_C_FLAGS_DEBUG "/D DEBUG")
     set(CMAKE_C_FLAGS_RELEASE "/Ox /D NDEBUG /fp:fast")
 endif()
 
