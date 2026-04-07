@@ -40,6 +40,13 @@ namespace audio
 {
     namespace
     {
+        /**
+         * @brief Forwards miniaudio capture callbacks to the owning duplex instance.
+         * @param device Duplex device issuing the callback.
+         * @param output Destination buffer for playback samples.
+         * @param input Source buffer containing captured samples.
+         * @param frame_count Number of audio frames available in the buffers.
+         */
         void frame_capture(ma_device* device, void* output, const void* input, ma_uint32 frame_count)
         {
             auto* samples_out = reinterpret_cast<sample_t*>(output);

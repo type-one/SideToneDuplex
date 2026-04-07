@@ -37,16 +37,44 @@ struct ma_device;
 
 namespace audio
 {
+    /**
+     * @brief Captures audio input and forwards it to the playback device.
+     */
     class audio_duplex : public tools::non_copyable
     {
     public:
+        /**
+         * @brief Disables default construction because a valid audio context is required.
+         */
         audio_duplex() = delete;
+
+        /**
+         * @brief Creates a duplex audio device bound to the provided context.
+         * @param context Shared audio context used to create the duplex device.
+         */
         explicit audio_duplex(std::shared_ptr<audio_context> context);
+
+        /**
+         * @brief Stops and releases the duplex audio device.
+         */
         ~audio_duplex();
 
+        /**
+         * @brief Starts audio capture and playback.
+         */
         void start();
+
+        /**
+         * @brief Stops audio capture and playback.
+         */
         void stop();
 
+        /**
+         * @brief Processes captured frames and writes them to the playback buffer.
+         * @param output Destination buffer for playback samples.
+         * @param input Source buffer containing captured samples.
+         * @param frames Number of audio frames available in the buffers.
+         */
         void on_capture(sample_t* output, const sample_t* input, const std::size_t frames);
 
     private:

@@ -28,15 +28,46 @@
 
 namespace tools
 {
+    /**
+     * @brief Base class that disables copy and move operations.
+     */
     class non_copyable
     {
     public:
+        /**
+         * @brief Creates a non-copyable base object.
+         */
         non_copyable() = default;
+
+        /**
+         * @brief Destroys the non-copyable base object.
+         */
         ~non_copyable() = default;
 
+        /**
+         * @brief Prevents copy construction.
+         * @param other Source object that would be copied.
+         */
         non_copyable(const non_copyable&) = delete;
+
+        /**
+         * @brief Prevents move construction.
+         * @param other Source object that would be moved.
+         */
         non_copyable(non_copyable&&) = delete;
+
+        /**
+         * @brief Prevents assignment from a const rvalue instance.
+         * @param other Source object that would be assigned.
+         * @return Reference to this object.
+         */
         non_copyable& operator=(const non_copyable&&) = delete;
+
+        /**
+         * @brief Prevents move assignment.
+         * @param other Source object that would be assigned.
+         * @return Reference to this object.
+         */
         non_copyable& operator=(non_copyable&&) = delete;
     };
 }

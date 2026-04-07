@@ -36,12 +36,26 @@ struct ma_context;
 
 namespace audio
 {
+    /**
+     * @brief Owns and initializes the miniaudio context used by audio devices.
+     */
     class audio_context : public tools::non_copyable
     {
     public:
+        /**
+         * @brief Creates and initializes the audio backend context.
+         */
         audio_context();
+
+        /**
+         * @brief Releases the audio backend context.
+         */
         ~audio_context();
 
+        /**
+         * @brief Returns the underlying miniaudio context instance.
+         * @return Reference to the initialized miniaudio context.
+         */
         ma_context& context();
 
     private:
