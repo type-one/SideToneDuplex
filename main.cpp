@@ -25,20 +25,30 @@
 #include "audio/audio_duplex.hpp"
 
 #include <cstdio>
+#include <exception>
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
     (void)argc;
     (void)argv;
 
-    auto context = std::make_shared<audio::audio_context>();
-    auto duplex = std::make_unique<audio::audio_duplex>(context);
+    try
+    {
+        auto context = std::make_shared<audio::audio_context>();
+        auto duplex = std::make_unique<audio::audio_duplex>(context);
 
-    duplex->start();
+        duplex->start();
 
-    (void)std::getchar();
+        (void)std::getchar();
 
-    duplex->stop();
+        duplex->stop();
+    }
+    catch (const std::exception& exception)
+    {
+        std::cerr << exception.what() << std::endl;
+        return 1;
+    }
 
     return 0;
 }

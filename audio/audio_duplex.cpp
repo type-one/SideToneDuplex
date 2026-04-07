@@ -33,6 +33,7 @@
 #include <iostream>
 #include <memory>
 #include <numeric>
+#include <stdexcept>
 #include <type_traits>
 #include <utility>
 
@@ -63,6 +64,11 @@ namespace audio
         : m_context(context)
         , m_duplex_device(std::make_unique<ma_device>())
     {
+        if (!m_context)
+        {
+            throw std::invalid_argument("Audio context must not be null");
+        }
+
         ma_device_config config = ma_device_config_init(ma_device_type_duplex);
         config.capture.pDeviceID = nullptr;
         config.playback.pDeviceID = nullptr;
@@ -98,8 +104,7 @@ namespace audio
 
         if (MA_SUCCESS != ma_device_init(&(m_context->context()), &config, m_duplex_device.get()))
         {
-            std::cerr << "Failed to initialize duplex device" << std::endl;
-            return;
+            throw std::runtime_error("Failed to initialize duplex device");
         }
 
         std::cout << "Capture Device " << m_duplex_device->capture.name << std::endl;
@@ -112,7 +117,7 @@ namespace audio
     {
         if (MA_SUCCESS != ma_device_start(m_duplex_device.get()))
         {
-            std::cerr << "Failed to start duplex device" << std::endl;
+            throw std::runtime_error("Failed to start duplex device");
         }
     }
 
@@ -120,7 +125,7 @@ namespace audio
     {
         if (MA_SUCCESS != ma_device_stop(m_duplex_device.get()))
         {
-            std::cerr << "Failed to stop duplex device" << std::endl;
+            throw std::runtime_error("Failed to stop duplex device");
         }
     }
 

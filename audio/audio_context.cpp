@@ -28,6 +28,7 @@
 
 #include <iostream>
 #include <memory>
+#include <stdexcept>
 
 namespace audio
 {
@@ -38,8 +39,7 @@ namespace audio
 
         if (MA_SUCCESS != ma_context_init(NULL, 0, &context_config, m_context.get()))
         {
-            std::cerr << "Failed to initialize context" << std::endl;
-            return;
+            throw std::runtime_error("Failed to initialize audio context");
         }
 
         std::cout << "MAL context initialized, backend is " << ma_get_backend_name(m_context->backend) << std::endl;

@@ -57,11 +57,11 @@ namespace tools
         non_copyable(non_copyable&&) = delete;
 
         /**
-         * @brief Prevents assignment from a const rvalue instance.
+         * @brief Prevents copy assignment.
          * @param other Source object that would be assigned.
          * @return Reference to this object.
          */
-        non_copyable& operator=(const non_copyable&&) = delete;
+        non_copyable& operator=(const non_copyable&) = delete;
 
         /**
          * @brief Prevents move assignment.
