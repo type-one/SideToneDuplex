@@ -61,7 +61,7 @@ namespace audio
     }
 
     audio_duplex::audio_duplex(std::shared_ptr<audio_context> context)
-        : m_context(context)
+        : m_context(std::move(context))
         , m_duplex_device(std::make_unique<ma_device>())
     {
         if (!m_context)
